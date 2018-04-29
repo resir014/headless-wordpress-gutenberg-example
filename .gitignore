@@ -1,0 +1,6 @@
+node_modules
+npm-debug.log
+yarn-error.log
+
+# robo config (which contains our secrets)
+/robo.yml

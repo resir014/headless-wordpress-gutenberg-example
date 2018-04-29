@@ -1,0 +1,16 @@
+/index.php
+/wp-*.php
+/wp-content/index.php
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/wp-content/uploads/wp-migrate-db/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+/wp-admin/*
+/wp-includes/*
+/wp-content/db.php
+/wp-content/index.php
+/wp-content/debug.log
+/wp-content/uploads/**
+/wp-content/languages
