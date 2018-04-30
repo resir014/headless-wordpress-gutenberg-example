@@ -7,11 +7,7 @@ import Menu from '../components/Menu'
 import { Config } from '../config'
 
 import 'styles/style.scss'
-
-const headerImageStyle = {
-  marginTop: 50,
-  marginBottom: 50
-}
+import * as styles from 'styles/pages/index.scss'
 
 class Index extends Component<any> {
   public static async getInitialProps() {
@@ -53,7 +49,7 @@ class Index extends Component<any> {
         <img
           src="/static/images/wordpress-plus-react-header.png"
           width="815"
-          style={headerImageStyle}
+          className={styles.headerImage}
         />
         <h1>{this.props.page.title.rendered}</h1>
         <div

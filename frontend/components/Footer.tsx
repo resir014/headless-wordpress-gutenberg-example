@@ -1,12 +1,11 @@
+import * as React from 'react'
 import Link from 'next/link'
 
-const hrStyle: React.CSSProperties = {
-  marginTop: 75
-}
+import * as styles from 'styles/components/Footer.scss'
 
 const Footer = () => (
   <div>
-    <hr style={hrStyle} />
+    <hr className={styles.footerRule} />
     <p>
       ❤️{' '}
       <Link href="https://postlight.com">
