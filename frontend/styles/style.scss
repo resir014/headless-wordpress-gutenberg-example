@@ -1,11 +1,14 @@
+@import '~normalize.css';
 @import 'theme-colors';
+
 $theme-font: verdana, sans-serif;
 
 body {
   font-family: $theme-font;
   background-color: $themeColor-Light;
 
-  h1, h2 {
-    color: $themeColor-Dark
+  h1,
+  h2 {
+    color: $themeColor-Dark;
   }
 }
