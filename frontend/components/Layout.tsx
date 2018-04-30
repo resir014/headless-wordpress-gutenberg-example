@@ -8,10 +8,10 @@ const layoutStyle: React.CSSProperties = {
   padding: 20
 }
 
-const Layout: React.SFC<any> = (props: any) => (
+const Layout: React.SFC = ({ children }) => (
   <div style={layoutStyle}>
     <Header />
-    {props.children}
+    {children}
     <Footer />
   </div>
 )

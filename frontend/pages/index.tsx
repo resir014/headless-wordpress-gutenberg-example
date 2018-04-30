@@ -1,11 +1,12 @@
-import Layout from '../components/Layout'
 import React, { Component } from 'react'
 import Link from 'next/link'
+
+import Layout from '../components/Layout'
 import PageWrapper from '../components/PageWrapper'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 
-import '../styles/style.scss'
+import 'styles/style.scss'
 
 const headerImageStyle = {
   marginTop: 50,
@@ -13,7 +14,7 @@ const headerImageStyle = {
 }
 
 class Index extends Component<any> {
-  public static async getInitialProps(context: any) {
+  public static async getInitialProps() {
     const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`)
     const page = await pageRes.json()
     const postsRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed`)

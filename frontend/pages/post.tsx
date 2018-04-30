@@ -1,12 +1,19 @@
-import Layout from '../components/Layout'
 import React, { Component } from 'react'
+import { NextContext } from 'next'
 import Error from 'next/error'
-import PageWrapper from '../components/PageWrapper'
+
+import Layout from '../components/Layout'
+import PageWrapper, { InjectedProps } from '../components/PageWrapper'
 import Menu from '../components/Menu'
 import { Config } from '../config'
+import { WPPost } from '../interfaces/api'
 
-class Post extends Component<any> {
-  public static async getInitialProps(context: any) {
+interface PostProps extends InjectedProps {
+  post: WPPost
+}
+
+class Post extends Component<PostProps> {
+  public static async getInitialProps(context: NextContext) {
     const { slug, apiRoute } = context.query
     const res = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`)
     const post = await res.json()

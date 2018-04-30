@@ -1,15 +1,30 @@
-import Layout from '../components/Layout'
 import React, { Component } from 'react'
 import Error from 'next/error'
-import PageWrapper from '../components/PageWrapper'
+
+import Layout from '../components/Layout'
+import PageWrapper, { InjectedProps } from '../components/PageWrapper'
 import Menu from '../components/Menu'
 import { Config } from '../config'
+import { WPPost, WPErrorResponse } from '../interfaces/api'
 
-class Preview extends Component<any, any> {
-  constructor(props: any) {
+interface PreviewProps extends InjectedProps {
+  url: {
+    query: {
+      [key: string]: string
+    }
+  }
+}
+
+interface PreviewState {
+  post?: WPPost
+  error?: WPErrorResponse
+}
+
+class Preview extends Component<PreviewProps, PreviewState> {
+  constructor(props: PreviewProps) {
     super(props)
     this.state = {
-      post: null
+      post: undefined
     }
   }
 
@@ -21,19 +36,20 @@ class Preview extends Component<any, any> {
     )
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          post: res
-        })
+        if (res.code || res.code === 'rest_cookie_invalid_nonce') {
+          this.setState({
+            error: res
+          })
+        } else {
+          this.setState({
+            post: res
+          })
+        }
       })
   }
 
   public render() {
-    if (
-      this.state.post &&
-      this.state.post.code &&
-      this.state.post.code === 'rest_cookie_invalid_nonce'
-    )
-      return <Error statusCode={404} />
+    if (this.state.error) return <Error statusCode={404} />
 
     return (
       <Layout>

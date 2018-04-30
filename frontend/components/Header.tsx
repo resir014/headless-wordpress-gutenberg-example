@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
 
-class Header extends Component<any> {
-  constructor(props: any) {
-    super(props)
-  }
-
+class Header extends Component {
   public render() {
     return (
       <div>

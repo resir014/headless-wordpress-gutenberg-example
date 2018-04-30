@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
+import { WPMenu, WPMenuItem } from 'interfaces/api'
 
 const linkStyle = {
   marginRight: 15
 }
 
-class Menu extends Component<any> {
+interface MenuProps {
+  menu: WPMenu
+}
+
+class Menu extends Component<MenuProps> {
   constructor(props: any) {
     super(props)
   }
@@ -16,7 +21,7 @@ class Menu extends Component<any> {
   }
 
   public render() {
-    const menuItems = this.props.menu.items.map((item: any) => {
+    const menuItems = this.props.menu.items.map((item: WPMenuItem) => {
       if (item.object === 'custom') {
         return (
           <Link href={item.url} key={item.ID}>
