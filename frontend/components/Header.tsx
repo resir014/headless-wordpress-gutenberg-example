@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-import Menu from './Menu';
-import { Config } from '../config';
+import React, { Component } from 'react'
+import Head from 'next/head'
 
-class Header extends Component {
-  constructor() {
-    super();
+class Header extends Component<any> {
+  constructor(props: any) {
+    super(props)
   }
 
-  render() {
+  public render() {
     return (
       <div>
         <Head>
@@ -18,8 +15,8 @@ class Header extends Component {
           <title>WordPress + React Starter Kit Frontend by Postlight</title>
         </Head>
       </div>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header

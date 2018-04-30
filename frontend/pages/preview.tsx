@@ -1,21 +1,20 @@
-import Layout from '../components/Layout';
-import React, { Component } from 'react';
-import fetch from 'isomorphic-unfetch';
-import Error from 'next/error';
-import PageWrapper from '../components/PageWrapper';
-import Menu from '../components/Menu';
-import { Config } from '../config';
+import Layout from '../components/Layout'
+import React, { Component } from 'react'
+import Error from 'next/error'
+import PageWrapper from '../components/PageWrapper'
+import Menu from '../components/Menu'
+import { Config } from '../config'
 
-class Preview extends Component {
-  constructor() {
-    super();
+class Preview extends Component<any, any> {
+  constructor(props: any) {
+    super(props)
     this.state = {
       post: null
-    };
+    }
   }
 
-  componentDidMount() {
-    const { id, wpnonce } = this.props.url.query;
+  public componentDidMount() {
+    const { id, wpnonce } = this.props.url.query
     fetch(
       `${Config.apiUrl}/wp-json/postlight/v1/post/preview?id=${id}&_wpnonce=${wpnonce}`,
       { credentials: 'include' } // required for cookie nonce auth
@@ -24,17 +23,17 @@ class Preview extends Component {
       .then(res => {
         this.setState({
           post: res
-        });
-      });
+        })
+      })
   }
 
-  render() {
+  public render() {
     if (
       this.state.post &&
       this.state.post.code &&
       this.state.post.code === 'rest_cookie_invalid_nonce'
     )
-      return <Error statusCode={404} />;
+      return <Error statusCode={404} />
 
     return (
       <Layout>
@@ -46,8 +45,8 @@ class Preview extends Component {
           }}
         />
       </Layout>
-    );
+    )
   }
 }
 
-export default PageWrapper(Preview);
+export default PageWrapper(Preview)

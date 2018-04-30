@@ -1,0 +1,6 @@
+{
+  "extends": ["tslint-config-blvd/react", "tslint-config-prettier"],
+  "rules": {
+    "jsx-no-multiline-js": false
+  }
+}

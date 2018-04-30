@@ -1,32 +1,31 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import { Config } from '../config';
+import React, { Component } from 'react'
+import Link from 'next/link'
 
 const linkStyle = {
   marginRight: 15
-};
+}
 
-class Menu extends Component {
-  constructor() {
-    super();
+class Menu extends Component<any> {
+  constructor(props: any) {
+    super(props)
   }
 
-  getSlug(url) {
-    const parts = url.split('/');
-    return parts.length > 2 ? parts[parts.length - 2] : '';
+  public getSlug(url: string) {
+    const parts = url.split('/')
+    return parts.length > 2 ? parts[parts.length - 2] : ''
   }
 
-  render() {
-    const menuItems = this.props.menu.items.map((item, index) => {
+  public render() {
+    const menuItems = this.props.menu.items.map((item: any) => {
       if (item.object === 'custom') {
         return (
           <Link href={item.url} key={item.ID}>
             <a style={linkStyle}>{item.title}</a>
           </Link>
-        );
+        )
       }
-      const slug = this.getSlug(item.url);
-      const actualPage = item.object === 'category' ? 'category' : 'post';
+      const slug = this.getSlug(item.url)
+      const actualPage = item.object === 'category' ? 'category' : 'post'
       return (
         <Link
           as={`/${item.object}/${slug}`}
@@ -35,8 +34,8 @@ class Menu extends Component {
         >
           <a style={linkStyle}>{item.title}</a>
         </Link>
-      );
-    });
+      )
+    })
 
     return (
       <div>
@@ -45,8 +44,8 @@ class Menu extends Component {
         </Link>
         {menuItems}
       </div>
-    );
+    )
   }
 }
 
-export default Menu;
+export default Menu

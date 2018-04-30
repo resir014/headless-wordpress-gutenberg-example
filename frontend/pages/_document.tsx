@@ -1,8 +1,11 @@
-import * as React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import * as React from 'react'
+import Document, { Head, Main, NextScript } from 'next/document'
+
+// isomorphic-unfetch polyfill
+import 'isomorphic-unfetch'
 
 export default class CustomDocument extends Document {
-  render() {
+  public render() {
     return (
       <html lang="en">
         <Head>
@@ -16,6 +19,6 @@ export default class CustomDocument extends Document {
           <NextScript />
         </body>
       </html>
-    );
+    )
   }
 }

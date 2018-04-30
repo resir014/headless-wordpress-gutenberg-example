@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-const hrStyle = {
+const hrStyle: React.CSSProperties = {
   marginTop: 75
-};
+}
 
 const Footer = () => (
   <div>
@@ -23,6 +23,6 @@ const Footer = () => (
       </Link>
     </p>
   </div>
-);
+)
 
-export default Footer;
+export default Footer
