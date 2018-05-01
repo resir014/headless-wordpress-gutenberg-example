@@ -7,7 +7,9 @@
     "dev": "node .",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node .",
-    "format": "prettier --write \"**/*.{js,jsx}\"",
+    "format": "prettier --write \"{pages,components,types}/**/*.{ts,tsx}\" && npm run lint:fix",
+    "lint": "tslint '{pages,components,types}/**/*.{ts,tsx}'",
+    "lint:fix": "tslint --fix '{pages,components,types}/**/*.{ts,tsx}'",
     "docker:build": "docker build -t frontend .",
     "docker:clean": "docker rm -f frontend || true",
     "docker:run": "docker run -p 3000:3000 --name frontend frontend",
@@ -19,6 +21,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": [">0.25%", "not ie 11", "not op_mini all"],
   "dependencies": {
     "@zeit/next-sass": "^0.1.2",
     "@zeit/next-typescript": "^0.1.1",
