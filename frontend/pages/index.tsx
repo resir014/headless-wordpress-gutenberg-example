@@ -6,7 +6,6 @@ import PageWrapper from '../components/PageWrapper'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 
-import 'styles/style.scss'
 import * as styles from 'styles/pages/index.scss'
 
 class Index extends Component<any> {
