@@ -3,12 +3,19 @@ import Link from 'next/link'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import withHeaderMenu from '../components/withHeaderMenu'
+import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
+import { NextContext } from 'next'
+import { WPPost } from 'interfaces/api'
 
-class CategoryPage extends Component<any> {
-  public static async getInitialProps(context: any) {
+interface IndexPageProps extends InjectedMenuProps {
+  categories: any
+  posts: WPPost[]
+}
+
+class CategoryPage extends Component<IndexPageProps> {
+  public static async getInitialProps(context: NextContext) {
     const { slug } = context.query
     const categoriesRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`)
     const categories = await categoriesRes.json()
