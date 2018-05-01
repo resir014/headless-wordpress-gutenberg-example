@@ -5651,7 +5651,6 @@ tslib@^1.0.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   version "0.1.0"
   resolved "https://codeload.github.com/blvdgroup/tslint-config-blvd/tar.gz/fd4d5062692f37133140a62879e401a2d30858ab"
   dependencies:
-    tslint-config-prettier "^1.12.0"
     tslint-consistent-codestyle "^1.11.1"
     tslint-eslint-rules "^4.1.1"
     tslint-microsoft-contrib "^5.0.3"

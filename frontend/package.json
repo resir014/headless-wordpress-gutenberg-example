@@ -22,7 +22,11 @@
   "keywords": [],
   "author": "",
   "license": "GPL-2.0",
-  "browserslist": [">0.25%", "not ie 11", "not op_mini all"],
+  "browserslist": [
+    ">0.25%",
+    "not ie 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@zeit/next-sass": "^0.1.2",
     "@zeit/next-typescript": "^0.1.1",
@@ -51,7 +55,6 @@
     "cross-env": "^5.1.4",
     "prettier": "^1.12.1",
     "tslint": "^5.9.1",
-    "tslint-config-blvd": "github:blvdgroup/tslint-config-blvd",
-    "tslint-config-prettier": "^1.12.0"
+    "tslint-config-blvd": "github:blvdgroup/tslint-config-blvd"
   }
 }
