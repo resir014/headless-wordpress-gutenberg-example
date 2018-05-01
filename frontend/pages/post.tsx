@@ -3,16 +3,16 @@ import { NextContext } from 'next'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import PageWrapper, { InjectedProps } from '../components/PageWrapper'
+import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost } from '../interfaces/api'
 
-interface PostProps extends InjectedProps {
+interface PostProps extends InjectedMenuProps {
   post: WPPost
 }
 
-class Post extends Component<PostProps> {
+class PostPage extends Component<PostProps> {
   public static async getInitialProps(context: NextContext) {
     const { slug, apiRoute } = context.query
     const res = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`)
@@ -37,4 +37,4 @@ class Post extends Component<PostProps> {
   }
 }
 
-export default PageWrapper(Post)
+export default withHeaderMenu(PostPage)

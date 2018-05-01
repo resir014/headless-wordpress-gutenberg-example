@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 import Link from 'next/link'
 
 import Layout from '../components/Layout'
-import PageWrapper from '../components/PageWrapper'
+import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 
 import * as styles from 'styles/pages/index.scss'
+import { WPPost } from 'interfaces/api'
 
-class Index extends Component<any> {
+interface IndexPageProps extends InjectedMenuProps {
+  posts: WPPost[]
+  pages: WPPost[]
+  page: WPPost
+}
+
+class IndexPage extends Component<IndexPageProps> {
   public static async getInitialProps() {
     const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`)
     const page = await pageRes.json()
@@ -65,4 +72,4 @@ class Index extends Component<any> {
   }
 }
 
-export default PageWrapper(Index)
+export default withHeaderMenu(IndexPage)

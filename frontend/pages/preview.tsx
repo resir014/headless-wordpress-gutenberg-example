@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import PageWrapper, { InjectedProps } from '../components/PageWrapper'
+import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost, WPErrorResponse } from '../interfaces/api'
 
-interface PreviewProps extends InjectedProps {
+interface PreviewProps extends InjectedMenuProps {
   url: {
     query: {
       [key: string]: string
@@ -20,7 +20,7 @@ interface PreviewState {
   error?: WPErrorResponse
 }
 
-class Preview extends Component<PreviewProps, PreviewState> {
+class PreviewPage extends Component<PreviewProps, PreviewState> {
   constructor(props: PreviewProps) {
     super(props)
     this.state = {
@@ -65,4 +65,4 @@ class Preview extends Component<PreviewProps, PreviewState> {
   }
 }
 
-export default PageWrapper(Preview)
+export default withHeaderMenu(PreviewPage)

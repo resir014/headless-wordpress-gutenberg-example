@@ -3,11 +3,11 @@ import Link from 'next/link'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import PageWrapper from '../components/PageWrapper'
+import withHeaderMenu from '../components/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 
-class Category extends Component<any> {
+class CategoryPage extends Component<any> {
   public static async getInitialProps(context: any) {
     const { slug } = context.query
     const categoriesRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`)
@@ -46,4 +46,4 @@ class Category extends Component<any> {
   }
 }
 
-export default PageWrapper(Category)
+export default withHeaderMenu(CategoryPage)

@@ -1,24 +1,25 @@
 import React from 'react'
-import { NextContext, NextPageComponentMethods } from 'next'
+import { NextContext } from 'next'
 
 import { WPMenu } from 'interfaces/api'
 import { Config } from 'config'
 
-export interface InjectedProps {
+export interface InjectedMenuProps {
   headerMenu: WPMenu
 }
 
-const PageWrapper = <TOriginalProps extends {}>(
-  Comp: React.ComponentType<InjectedProps> & NextPageComponentMethods
-) => {
-  type CombinedProps = TOriginalProps & InjectedProps
+const withHeaderMenu = <TOriginalProps extends {}>(
+  Comp: React.ComponentType<TOriginalProps>
+): React.ComponentClass<TOriginalProps & InjectedMenuProps> => {
+  type CombinedProps = TOriginalProps & InjectedMenuProps
   class WrappedPage extends React.Component<CombinedProps> {
     public static async getInitialProps(args: NextContext) {
+      const tmp: any = Comp
       const headerMenuRes = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`)
       const headerMenu = await headerMenuRes.json()
       return {
         headerMenu,
-        ...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null)
+        ...(tmp.getInitialProps ? await tmp.getInitialProps(args) : null)
       }
     }
 
@@ -30,4 +31,4 @@ const PageWrapper = <TOriginalProps extends {}>(
   return WrappedPage
 }
 
-export default PageWrapper
+export default withHeaderMenu
