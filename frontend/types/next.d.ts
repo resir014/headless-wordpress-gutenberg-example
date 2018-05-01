@@ -15,4 +15,8 @@ declare module 'next' {
     res?: object
     renderPage: (cb: Function) => object
   }
+
+  export interface NextPageComponentMethods<TProps = {}> {
+    static getInitialProps(context?: NextContext): Promise<TProps>
+  }
 }

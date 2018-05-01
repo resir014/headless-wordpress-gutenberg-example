@@ -1,5 +1,5 @@
 import React from 'react'
-import { NextContext } from 'next'
+import { NextContext, NextPageComponentMethods } from 'next'
 
 import { WPMenu } from 'interfaces/api'
 import { Config } from 'config'
@@ -8,7 +8,9 @@ export interface InjectedProps {
   headerMenu: WPMenu
 }
 
-const PageWrapper = <TOriginalProps extends {}>(Comp: any) => {
+const PageWrapper = <TOriginalProps extends {}>(
+  Comp: React.ComponentType<InjectedProps> & NextPageComponentMethods
+) => {
   type CombinedProps = TOriginalProps & InjectedProps
   class WrappedPage extends React.Component<CombinedProps> {
     public static async getInitialProps(args: NextContext) {
