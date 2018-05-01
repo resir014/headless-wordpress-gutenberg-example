@@ -8,8 +8,8 @@ define( 'WP_DIR', PROJECT_DIR . '/wordpress' );
  *
  * @see http://robo.li/
  */
-class RoboFile extends \Robo\Tasks
-{
+class RoboFile extends \Robo\Tasks {
+
 	public function wordpressSetup(
 		$opts = array(
 			'mysql-host' => '127.0.0.1',
@@ -23,8 +23,7 @@ class RoboFile extends \Robo\Tasks
 			'wp-description' => 'Just another (headless) WordPress site',
 			'wp-plugins' => array(),
 		)
-	)
-	{
+	) {
 		$confirm = $this->io()->confirm( 'This will replace your current ' .
 		'WordPress install. Are you sure you want to do this?', false);
 
