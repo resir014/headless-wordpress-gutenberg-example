@@ -17,7 +17,7 @@ interface IndexPageProps extends InjectedMenuProps {
 
 class IndexPage extends Component<IndexPageProps> {
   public static async getInitialProps() {
-    const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`)
+    const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/frontpage`)
     const page = await pageRes.json()
     const postsRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed`)
     const posts = await postsRes.json()

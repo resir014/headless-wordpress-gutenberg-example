@@ -46,6 +46,11 @@ add_action( 'rest_api_init', function () {
 			return current_user_can( 'edit_posts' );
 		}
 	) );
+
+	register_rest_route('postlight/v1', '/frontpage', array(
+		'methods' => 'GET',
+		'callback' => 'rest_get_front_page'
+	) );
 });
 
 /**
@@ -66,6 +71,31 @@ function rest_get_post( WP_REST_Request $request ) {
  */
 function rest_get_page( WP_REST_Request $request ) {
 	return rest_get_content( $request, 'page', __FUNCTION__ );
+}
+
+/**
+ * Respond to a REST API request to get the active static frontpage.
+ *
+ * @param WP_REST_Request $request
+ * @return WP_REST_Response
+ */
+function rest_get_front_page( WP_REST_Request $request ) {
+	// Get the ID of the static frontpage. If not set it's 0
+	$pid = get_option( 'page_on_front' );
+
+	if ( ! $post = get_post( $pid ) ) {
+		return new WP_Error(
+			__FUNCTION__,
+			'No static front page is defined.',
+			array( 'status' => 404 )
+		);
+	}
+
+	$controller = new WP_REST_Posts_Controller( 'post' );
+	$data = $controller->prepare_item_for_response( $post, $request );
+	$response = $controller->prepare_response_for_collection( $data );
+
+	return new WP_REST_Response( $response );
 }
 
 /**
