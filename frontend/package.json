@@ -1,8 +1,9 @@
 {
-  "name": "@salsabytes/frontend",
+  "name": "@headless-wp/frontend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "private": true,
   "scripts": {
     "dev": "node .",
     "build": "next build",
@@ -20,7 +21,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-2.0",
   "browserslist": [">0.25%", "not ie 11", "not op_mini all"],
   "dependencies": {
     "@zeit/next-sass": "^0.1.2",
