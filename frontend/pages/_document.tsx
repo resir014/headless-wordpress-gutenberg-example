@@ -11,7 +11,6 @@ export default class CustomDocument extends Document {
         <Head>
           <link rel="icon" href="/static/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body>
           <Main />

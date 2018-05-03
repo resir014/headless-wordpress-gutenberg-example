@@ -5,8 +5,6 @@ import Layout from '../components/Layout'
 import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
-
-import * as styles from 'styles/pages/index.scss'
 import { WPPost } from 'interfaces/api'
 
 interface IndexPageProps extends InjectedMenuProps {
@@ -55,7 +53,7 @@ class IndexPage extends Component<IndexPageProps> {
         <img
           src="/static/images/wordpress-plus-react-header.png"
           width="815"
-          className={styles.headerImage}
+          className="header-image"
         />
         <h1>{this.props.page.title.rendered}</h1>
         <div
@@ -67,6 +65,13 @@ class IndexPage extends Component<IndexPageProps> {
         {posts}
         <h2>Pages</h2>
         {pages}
+
+        <style jsx>{`
+          .header-image {
+            margin-top: 50px;
+            margin-bottom: 50px;
+          }
+        `}</style>
       </Layout>
     )
   }

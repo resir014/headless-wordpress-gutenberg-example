@@ -89,6 +89,12 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
+"@types/styled-jsx@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@types/styled-jsx/-/styled-jsx-2.2.3.tgz#c97ed7ad8d7b4e6ffbe84e2d4c24a49eb1b9fe54"
+  dependencies:
+    "@types/react" "*"
+
 "@zeit/check-updates@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@zeit/check-updates/-/check-updates-1.1.1.tgz#1bee858fd3f9b8633b0fc23dff53cb17343331c0"
@@ -5655,10 +5661,6 @@ tslib@^1.0.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
     tslint-eslint-rules "^4.1.1"
     tslint-microsoft-contrib "^5.0.3"
     tslint-react "^3.5.0"
-
-tslint-config-prettier@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.12.0.tgz#bc8504f286ecf42b906f3d1126a093114f5729cc"
 
 tslint-consistent-codestyle@^1.11.1:
   version "1.13.0"

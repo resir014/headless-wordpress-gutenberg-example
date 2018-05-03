@@ -1,11 +1,9 @@
 import * as React from 'react'
 import Link from 'next/link'
 
-import * as styles from 'styles/components/Footer.scss'
-
 const Footer = () => (
   <div>
-    <hr className={styles.footerRule} />
+    <hr className="footer-rule" />
     <p>
       ❤️{' '}
       <Link href="https://postlight.com">
@@ -21,6 +19,12 @@ const Footer = () => (
         <a>Say hi.</a>
       </Link>
     </p>
+
+    <style jsx>{`
+      .footer-rule {
+        margin-top: 75px;
+      }
+    `}</style>
   </div>
 )
 
