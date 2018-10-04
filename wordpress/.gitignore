@@ -14,3 +14,4 @@
 /wp-content/debug.log
 /wp-content/uploads/**
 /wp-content/languages
+/wp-content/upgrade/

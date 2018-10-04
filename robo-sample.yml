@@ -3,7 +3,7 @@ command:
     setup:
       options:
         mysql-host: 127.0.0.1
-        mysql-root-password:
+        mysql-root-password: ""
         wp-user: nedstark
         wp-pw: winteriscoming
         wp-theme-dir: postlight-headless-wp
@@ -16,6 +16,6 @@ command:
         # wp-plugins:
     import:
       options:
-        migratedb-license:
+        migratedb-license: ""
         # Use http vs https to avoid SSL error https://deliciousbrains.com/wp-migrate-db-pro/doc/ssl-errors/
-        migratedb-from:
+        migratedb-from: ""

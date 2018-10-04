@@ -49,7 +49,7 @@ class RoboFile extends \Robo\Tasks {
 			' -e "flush privileges"'
 		);
 
-		$this->wp( 'core download --version=4.9.5 --locale=en_US --force' );
+		$this->wp( 'core download --version=4.9.8 --locale=en_US --force' );
 		$this->wp( 'core config --dbname=' . $opts['wp-db-name'] . ' --dbuser=' . $opts['wp-db-name'] . ' --dbpass=' . $opts['wp-db-name'] . ' --dbhost=0.0.0.0' );
 		$this->wp( 'db drop --yes' );
 		$this->wp( 'db create' );
