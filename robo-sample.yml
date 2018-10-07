@@ -14,8 +14,3 @@ command:
         # wp-plugins is optional
         # If not set, Robo will activate all the plugins that are installed.
         # wp-plugins:
-    import:
-      options:
-        migratedb-license: ""
-        # Use http vs https to avoid SSL error https://deliciousbrains.com/wp-migrate-db-pro/doc/ssl-errors/
-        migratedb-from: ""
