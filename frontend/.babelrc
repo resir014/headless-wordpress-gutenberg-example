@@ -5,15 +5,12 @@
       {
         "root": ["."],
         "alias": {
-          "styles": "./styles"
+          "components": "./components",
+          "interfaces": "./interfaces",
+          "styles": "./styles",
+          "types": "./types"
         },
         "cwd": "babelrc"
-      }
-    ],
-    [
-      "wrap-in-js",
-      {
-        "extensions": ["css$", "scss$"]
       }
     ]
   ],
