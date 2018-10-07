@@ -49,7 +49,7 @@ class PreviewPage extends Component<PreviewProps, PreviewState> {
   }
 
   public render() {
-    if (this.state.error) return <Error statusCode={404} />
+    if (this.state.error) return <Error statusCode={this.state.error.data.status || 404} />
 
     return (
       <Layout>
