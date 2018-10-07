@@ -106,7 +106,7 @@ class RoboFile extends \Robo\Tasks {
 			'--post_title="Congratulations!"' );
 
 		// Set the above page as our front page.
-		$this->wp( 'option update page_on_front 4' );
+		$this->wp( 'option update page_on_front 5' );
 		$this->wp( 'option update show_on_front page' );
 
 		// Update the default 'Uncategorized' category name to make it more menu-friendly
