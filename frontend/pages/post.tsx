@@ -8,6 +8,8 @@ import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost } from '../interfaces/api'
 
+import blockStyles from '@wordpress/block-library/build-style/style.css'
+
 interface PostProps extends InjectedMenuProps {
   post: WPPost
 }
@@ -28,10 +30,14 @@ class PostPage extends Component<PostProps> {
         <Menu menu={this.props.headerMenu} />
         <h1>{this.props.post.title.rendered}</h1>
         <div
+          className="content"
           dangerouslySetInnerHTML={{
             __html: this.props.post.content.rendered
           }}
         />
+        <style global jsx>
+          {blockStyles}
+        </style>
       </Layout>
     )
   }
