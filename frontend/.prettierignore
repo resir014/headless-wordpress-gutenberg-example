@@ -1,3 +1,2 @@
-/package.json
-/.next
-/styles/normalize.ts
+node_modules/
+.next/

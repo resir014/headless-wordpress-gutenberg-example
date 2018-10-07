@@ -8,10 +8,12 @@ const Footer = () => (
       ❤️{' '}
       <Link href="https://postlight.com">
         <a>Made by Postlight</a>
-      </Link>. 🍴{' '}
+      </Link>
+      . 🍴{' '}
       <Link href="https://github.com/postlight/headless-wp-starter">
         <a>Fork on GitHub</a>
-      </Link>.
+      </Link>
+      .
     </p>
     <p>
       👋 Need help with your publishing platform?{' '}
