@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-import normalize from 'modern-normalize/modern-normalize.css'
+import normalize from 'modern-normalize'
 
 const Layout: React.SFC = ({ children }) => (
   <div>
