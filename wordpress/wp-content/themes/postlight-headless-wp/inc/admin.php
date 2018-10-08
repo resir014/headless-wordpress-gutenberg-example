@@ -27,3 +27,5 @@ function set_headless_preview_link( $link ) {
 
 add_filter( 'preview_post_link', 'set_headless_preview_link' );
 
+// Enable post thumbnails
+add_theme_support( 'post-thumbnails' );
