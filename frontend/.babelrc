@@ -8,7 +8,6 @@
           "components": "./components",
           "interfaces": "./interfaces",
           "pages": "./pages",
-          "styles": "./styles",
           "types": "./types"
         },
         "cwd": "babelrc"

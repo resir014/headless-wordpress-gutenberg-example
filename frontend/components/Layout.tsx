@@ -2,7 +2,8 @@ import React from 'react'
 
 import Header from './Header'
 import Footer from './Footer'
-import normalize from 'styles/normalize'
+
+import normalize from 'modern-normalize/modern-normalize.css'
 
 const Layout: React.SFC = ({ children }) => (
   <div>
@@ -32,8 +33,14 @@ const Layout: React.SFC = ({ children }) => (
       }
     `}</style>
     <style jsx>{`
-       {
-        padding: 40px;
+      div {
+        padding: 16px;
+      }
+
+      @media (min-width: 768px) {
+        div {
+          padding: 40px;
+        }
       }
     `}</style>
   </div>
