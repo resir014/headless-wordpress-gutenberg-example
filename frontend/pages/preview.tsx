@@ -7,6 +7,8 @@ import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost, WPErrorResponse } from '../interfaces/api'
 
+import blockStyles from '@wordpress/block-library/build-style/style.css'
+
 interface PreviewProps extends InjectedMenuProps {
   url: {
     query: {
@@ -60,6 +62,9 @@ class PreviewPage extends Component<PreviewProps, PreviewState> {
             __html: this.state.post ? this.state.post.content.rendered : ''
           }}
         />
+        <style global jsx>
+          {blockStyles}
+        </style>
       </Layout>
     )
   }
