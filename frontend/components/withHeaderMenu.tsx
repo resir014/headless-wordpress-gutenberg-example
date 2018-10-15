@@ -1,5 +1,5 @@
 import React from 'react'
-import { NextContext } from 'next'
+import { NextContext, NextComponentType } from 'next'
 
 import { WPMenu } from 'interfaces/api'
 import { Config } from 'config'
@@ -8,27 +8,22 @@ export interface InjectedMenuProps {
   headerMenu: WPMenu
 }
 
-const withHeaderMenu = <TOriginalProps extends {}>(
-  Comp: React.ComponentType<TOriginalProps>
-): React.ComponentClass<TOriginalProps & InjectedMenuProps> => {
-  type CombinedProps = TOriginalProps & InjectedMenuProps
-  class WrappedPage extends React.Component<CombinedProps> {
-    public static async getInitialProps(args: NextContext) {
-      const tmp: any = Comp
-      const headerMenuRes = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`)
-      const headerMenu = await headerMenuRes.json()
-      return {
-        headerMenu,
-        ...(tmp.getInitialProps ? await tmp.getInitialProps(args) : null)
-      }
+const withHeaderMenu = <P extends {}>(Page: NextComponentType<P & InjectedMenuProps, P>) => {
+  return class extends React.Component<P & InjectedMenuProps> {
+    public static async getInitialProps(ctx: NextContext) {
+      const pageProps = Page.getInitialProps && (await Page.getInitialProps(ctx))
+
+      const headerMenu = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`).then(
+        res => res.json()
+      )
+
+      return Object.assign({}, pageProps, { headerMenu })
     }
 
     public render() {
-      return <Comp {...this.props} {...this.state} />
+      return <Page {...this.props} />
     }
   }
-
-  return WrappedPage
 }
 
 export default withHeaderMenu
