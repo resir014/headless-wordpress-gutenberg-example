@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
-import Menu from '../components/Menu'
+import withHeaderMenu, { InjectedMenuProps } from '../hoc/withHeaderMenu'
 import { Config } from '../config'
 import { WPPost, WPErrorResponse } from '../interfaces/api'
+
+import blockStyles from '@wordpress/block-library/build-style/style.css'
 
 interface PreviewProps extends InjectedMenuProps {
   url: {
@@ -49,17 +50,22 @@ class PreviewPage extends Component<PreviewProps, PreviewState> {
   }
 
   public render() {
-    if (this.state.error) return <Error statusCode={this.state.error.data.status || 404} />
+    const { headerMenu } = this.props
+    const { post, error } = this.state
+
+    if (error) return <Error statusCode={error.data.status || 404} />
 
     return (
-      <Layout>
-        <Menu menu={this.props.headerMenu} />
-        <h1>{this.state.post ? this.state.post.title.rendered : ''}</h1>
+      <Layout menu={headerMenu}>
+        <h1>{post ? post.title.rendered : ''}</h1>
         <div
           dangerouslySetInnerHTML={{
-            __html: this.state.post ? this.state.post.content.rendered : ''
+            __html: post ? post.content.rendered : ''
           }}
         />
+        <style global jsx>
+          {blockStyles}
+        </style>
       </Layout>
     )
   }

@@ -6,9 +6,9 @@
         "root": ["."],
         "alias": {
           "components": "./components",
+          "hoc": "./hoc",
           "interfaces": "./interfaces",
           "pages": "./pages",
-          "styles": "./styles",
           "types": "./types"
         },
         "cwd": "babelrc"

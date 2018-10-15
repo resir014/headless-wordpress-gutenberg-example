@@ -2,7 +2,7 @@
   "rulesDirectory": ["tslint-plugin-prettier"],
   "extends": ["tslint-config-blvd/react", "tslint-config-prettier"],
   "linterOptions": {
-    "exclude": ["node_modules/**"]
+    "exclude": ["node_modules/**", ".next/**"]
   },
   "rules": {
     "prettier": true

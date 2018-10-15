@@ -1,15 +1,15 @@
 ![WordPress + React Starter Kit](frontend/static/images/wordpress-plus-react-header.png)
 
-This is a slightly-modified version of [Postlight's Headless WordPress toolkit](https://github.com/postlight/headless-wp-starter). You can read all about it in [this handy introduction](https://trackchanges.postlight.com/introducing-postlights-wordpress-react-starter-kit-a61e2633c48c).
+This is a fork of [Postlight's Headless WordPress toolkit](https://github.com/postlight/headless-wp-starter) which includes support for [Gutenberg](https://wordpress.org/gutenberg/). You can read all about it in [this handy introduction](https://trackchanges.postlight.com/introducing-postlights-wordpress-react-starter-kit-a61e2633c48c).
 
-**What's inside:**
+## What's inside
 
 - An automated installer script which bootstraps a core WordPress installation.
-- The WordPress plugins you need to set up custom post types and custom fields ([Advanced Custom Fields Pro](https://www.advancedcustomfields.com/) and [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)).
-- Plugins which expose those custom fields and WordPress menus in the [WP REST API](https://developer.wordpress.org/rest-api/) ([ACF to WP API](https://wordpress.org/plugins/acf-to-wp-api/) and [WP-REST-API V2 Menus](https://wordpress.org/plugins/wp-rest-api-v2-menus/)).
+- [Gutenberg](https://wordpress.org/gutenberg/), WordPress' next-generation post editor, installed as a plugin.
+- [Advanced Custom Fields](https://www.advancedcustomfields.com/) and [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/).
+- Plugins which expose ACF fields and WordPress menus in the [WP REST API](https://developer.wordpress.org/rest-api/) ([ACF to WP API](https://wordpress.org/plugins/acf-to-wp-api/) and [WP-REST-API V2 Menus](https://wordpress.org/plugins/wp-rest-api-v2-menus/)).
 - All the starter WordPress theme code and settings headless requires, including pretty permalinks, CORS `Allow-Origin` headers, and useful logging functions for easy debugging.
-- A mechanism for easily importing data from an existing WordPress installation anywhere on the web using [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) and its accompanying plugins (license required).
-- A starter frontend React app powered by [Next.js](https://learnnextjs.com/).
+- A starter frontend React app powered by [Next.js](https://nextjs.org/).
 - A [Docker](https://www.docker.com/) container and scripts to manage it, for easily running the frontend React app locally or deploying it to any hosting provider with Docker support.
 
 Let's get started.
@@ -42,22 +42,22 @@ Once you have installed PHP and added it to your `PATH`, we can now install [Com
 
 Follow the [installation guides](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) for your specific operating system, and make sure that Composer is properly installed by running:
 
-```zsh
-> composer
+```sh-session
+$ composer
 ```
 
 ### WP-CLI
 
 [WP-CLI](https://wp-cli.org/) is WordPress' official CLI tool. Install it via composer:
 
-```zsh
-> composer global require wp-cli/wp-cli-bundle
+```sh-session
+$ composer global require wp-cli/wp-cli-bundle
 ```
 
 Make sure that WP-CLI is properly installed by running:
 
-```zsh
-> wp help
+```sh-session
+$ wp help
 ```
 
 ### Robo
@@ -66,42 +66,38 @@ Make sure that WP-CLI is properly installed by running:
 
 Install it via composer:
 
-```zsh
-> composer global require consolidation/robo
+```sh-session
+$ composer global require consolidation/robo
 ```
 
 Make sure that Robo is properly installed by running:
 
-```zsh
-> robo -h
+```sh-session
+$ robo -h
 ```
 
 ## WordPress Backend
 
 ### Initial setup
 
-Before setting up, make a copy of the `robo-sample.yml` file, and name it `robo.yml`. This will contain our WordPress setup configurations.
+Before setting up, make a copy of the `robo-sample.yml` file, and name it `robo.yml`. This will contain your WordPress setup configurations.
 
-To set up your new wordpress instance properly configured for headless development, run the following command.
+To set up your new WordPress instance properly configured for headless development, run the following command.
 
-```zsh
-> robo wordpress:setup
+```sh-session
+$ robo wordpress:setup
 ```
 
 ### Running the server
 
 Once finished, we can now run the WordPress server.
 
-```zsh
-> robo server
+```sh-session
+$ robo server
 ```
 
 - The WordPress REST API is available at [http://localhost:8080](http://localhost:8080)
-- The WordPress admin is at [http://localhost:8080/wp-admin/](http://localhost:8080/wp-admin/) default login credentials `nedstark` / `winteriscoming`
-
-### Import Data (Optional)
-
-To import data and media from a live WordPress installation, you can use the Migrate DB Pro plugin, which is already installed. To do so, in the `robo.yml` file, set the plugin license and source install. Run `robo wordpress:setup`, then run `robo wordpress:import` to pull in the data.
+- The WordPress admin is at [http://localhost:8080/wp-admin/](http://localhost:8080/wp-admin/) (default login credentials: `nedstark` / `winteriscoming`)
 
 ### Extend the WordPress API
 
@@ -113,10 +109,10 @@ At this point you can start setting up custom fields in the WordPress admin, and
 
 To spin up the frontend client app, run the following commands:
 
-```zsh
-> cd frontend
-> yarn
-> yarn dev
+```sh-session
+$ cd frontend
+$ yarn
+$ yarn dev
 ```
 
 The Next.js app will be running on [http://localhost:3000](http://localhost:3000).
@@ -133,8 +129,8 @@ To run the Docker container locally:
 2.  In `frontend/config.js`, replace `localhost:8080` with your publicly-accessible WordPress installation's domain name or IP address.
 3.  Start the container by running this command:
 
-```zsh
-> yarn deploy
+```sh-session
+$ yarn deploy
 ```
 
 ## Troubleshooting Common Errors

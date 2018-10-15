@@ -2,7 +2,7 @@ import * as React from 'react'
 import Link from 'next/link'
 
 const Footer = () => (
-  <div>
+  <footer>
     <hr className="footer-rule" />
     <p>
       ❤️{' '}
@@ -27,7 +27,7 @@ const Footer = () => (
         margin-top: 75px;
       }
     `}</style>
-  </div>
+  </footer>
 )
 
 export default Footer

@@ -105,6 +105,10 @@ class RoboFile extends \Robo\Tasks {
 			'--post_type=page --post_status=publish --post_name=welcome '.
 			'--post_title="Congratulations!"' );
 
+		$this->wp( 'post create wp-content/themes/postlight-headless-wp/post-content/sample-gutenberg.txt '.
+			'--post_status=publish --post_name=welcome-to-the-gutenberg-editor '.
+			'--post_title="Welcome to the Gutenberg Editor" ' );
+
 		// Set the above page as our front page.
 		$this->wp( 'option update page_on_front 5' );
 		$this->wp( 'option update show_on_front page' );
@@ -125,33 +129,6 @@ class RoboFile extends \Robo\Tasks {
 
 	public function server() {
 		$this->wp( 'server' );
-	}
-
-	public function wordpressImport( $opts = [
-		'migratedb-license' => null,
-		'migratedb-from' => null,
-	] ) {
-		if ( isset( $opts['migratedb-license'] ) ) {
-			$this->wp( 'migratedb setting update license ' . $opts['migratedb-license'] );
-		} else {
-			$this->say( 'WP Migrate DB Pro: no license available. Please set migratedb-license in the robo.yml file.' );
-			return;
-		}
-
-		if ( isset( $opts['migratedb-from'] ) ) {
-			$command = 'WPMDB_EXCLUDE_RESIZED_MEDIA=1 wp migratedb pull ';
-			$command .= $opts['migratedb-from'];
-			$command .= ' --backup=prefix ';
-			$command .= ' --media=compare ';
-			$this->io()->success( 'About to run data migration from ' . $opts['migratedb-from'] );
-			$this->taskExec( $command )->run();
-			// Set siteurl and home
-			$this->wp( 'option update siteurl http://localhost:8080' );
-			$this->wp( 'option update home http://localhost:8080' );
-		} else {
-			$this->say( 'WP Migrate DB Pro: No source installation specified. Please set migratedb-from in the robo.yml file.' );
-			return;
-		}
 	}
 
 	public function wp( $arg ) {

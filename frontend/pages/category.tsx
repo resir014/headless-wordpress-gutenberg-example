@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
+import withHeaderMenu, { InjectedMenuProps } from '../hoc/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 import { NextContext } from 'next'
@@ -17,8 +17,10 @@ interface IndexPageProps extends InjectedMenuProps {
 class CategoryPage extends Component<IndexPageProps> {
   public static async getInitialProps(context: NextContext) {
     const { slug } = context.query
-    const categoriesRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`)
-    const categories = await categoriesRes.json()
+    const categories = await fetch(`${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`).then(
+      res => res.json()
+    )
+
     if (categories.length > 0) {
       const postsRes = await fetch(
         `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&categories=${categories[0].id}`
@@ -32,7 +34,7 @@ class CategoryPage extends Component<IndexPageProps> {
   public render() {
     if (this.props.categories.length === 0) return <Error statusCode={404} />
 
-    const posts = this.props.posts.map((post: any, index: number) => {
+    const posts = this.props.posts.map((post, index) => {
       return (
         <ul key={index}>
           <li>
