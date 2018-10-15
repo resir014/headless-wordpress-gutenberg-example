@@ -105,6 +105,10 @@ class RoboFile extends \Robo\Tasks {
 			'--post_type=page --post_status=publish --post_name=welcome '.
 			'--post_title="Congratulations!"' );
 
+		$this->wp( 'post create wp-content/themes/postlight-headless-wp/post-content/sample-gutenberg.txt '.
+			'--post_status=publish --post_name=welcome-to-the-gutenberg-editor '.
+			'--post_title="Welcome to the Gutenberg Editor" ' );
+
 		// Set the above page as our front page.
 		$this->wp( 'option update page_on_front 5' );
 		$this->wp( 'option update show_on_front page' );
