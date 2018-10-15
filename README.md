@@ -5,7 +5,7 @@ This is a fork of [Postlight's Headless WordPress toolkit](https://github.com/po
 ## What's inside
 
 - An automated installer script which bootstraps a core WordPress installation.
-- [Gutenberg](https://wordpress.org/gutenberg/), WordPress' next-generation post editor.
+- [Gutenberg](https://wordpress.org/gutenberg/), WordPress' next-generation post editor, installed as a plugin.
 - [Advanced Custom Fields](https://www.advancedcustomfields.com/) and [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/).
 - Plugins which expose ACF fields and WordPress menus in the [WP REST API](https://developer.wordpress.org/rest-api/) ([ACF to WP API](https://wordpress.org/plugins/acf-to-wp-api/) and [WP-REST-API V2 Menus](https://wordpress.org/plugins/wp-rest-api-v2-menus/)).
 - All the starter WordPress theme code and settings headless requires, including pretty permalinks, CORS `Allow-Origin` headers, and useful logging functions for easy debugging.
