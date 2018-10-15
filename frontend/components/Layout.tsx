@@ -1,37 +1,22 @@
 import React from 'react'
 
+import { WPMenu } from 'interfaces/api'
+
 import Header from './Header'
 import Footer from './Footer'
+import Menu from './Menu'
 
-import normalize from 'modern-normalize'
+interface LayoutProps {
+  menu?: WPMenu
+}
 
-const Layout: React.SFC = ({ children }) => (
+const Layout: React.SFC<LayoutProps> = ({ children, menu }) => (
   <div>
     <Header />
-    {children}
+    {menu && <Menu menu={menu} />}
+    <main>{children}</main>
     <Footer />
 
-    <style jsx global>
-      {normalize}
-    </style>
-    <style jsx global>{`
-      html {
-        box-sizing: border-box;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-          Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
-      }
-      * {
-        box-sizing: inherit;
-      }
-      body {
-        background-color: #fff;
-      }
-      h1,
-      h2 {
-        color: #000;
-        font-weight: 600;
-      }
-    `}</style>
     <style jsx>{`
       div {
         padding: 16px;

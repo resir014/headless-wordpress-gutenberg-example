@@ -20,7 +20,7 @@ class Menu extends Component<MenuProps> {
     const { menu } = this.props
 
     return (
-      <div>
+      <nav>
         <Link href="/">
           <a className="menu-link">Home</a>
         </Link>
@@ -51,7 +51,7 @@ class Menu extends Component<MenuProps> {
             margin-right: 15px;
           }
         `}</style>
-      </div>
+      </nav>
     )
   }
 }

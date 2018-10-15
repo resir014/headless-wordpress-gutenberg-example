@@ -4,7 +4,6 @@ import Error from 'next/error'
 
 import Layout from '../components/Layout'
 import withHeaderMenu, { InjectedMenuProps } from '../hoc/withHeaderMenu'
-import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost } from '../interfaces/api'
 
@@ -23,16 +22,17 @@ class PostPage extends Component<PostProps> {
   }
 
   public render() {
-    if (!this.props.post.title) return <Error statusCode={404} />
+    const { post, headerMenu } = this.props
+
+    if (!post.title) return <Error statusCode={404} />
 
     return (
-      <Layout>
-        <Menu menu={this.props.headerMenu} />
-        <h1>{this.props.post.title.rendered}</h1>
+      <Layout menu={headerMenu}>
+        <h1>{post.title.rendered}</h1>
         <div
           className="content"
           dangerouslySetInnerHTML={{
-            __html: this.props.post.content.rendered
+            __html: post.content.rendered
           }}
         />
         <style global jsx>

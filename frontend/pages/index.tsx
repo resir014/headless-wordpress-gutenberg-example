@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import Layout from '../components/Layout'
 import withHeaderMenu, { InjectedMenuProps } from '../hoc/withHeaderMenu'
-import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost } from 'interfaces/api'
 
@@ -15,17 +14,19 @@ interface IndexPageProps extends InjectedMenuProps {
 
 class IndexPage extends Component<IndexPageProps> {
   public static async getInitialProps() {
-    const pageRes = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/frontpage`)
-    const page = await pageRes.json()
-    const postsRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed`)
-    const posts = await postsRes.json()
-    const pagesRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages?_embed`)
-    const pages = await pagesRes.json()
+    const page = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/frontpage`).then(res =>
+      res.json()
+    )
+    const posts = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed`).then(res => res.json())
+    const pages = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages?_embed`).then(res => res.json())
+
     return { page, posts, pages }
   }
 
   public render() {
-    const posts = this.props.posts.map((post: any, index: number) => {
+    const { posts, pages, page, headerMenu } = this.props
+
+    const allPosts = posts.map((post: any, index: number) => {
       return (
         <ul key={index}>
           <li>
@@ -36,35 +37,34 @@ class IndexPage extends Component<IndexPageProps> {
         </ul>
       )
     })
-    const pages = this.props.pages.map((page: any, index: number) => {
+    const allPages = pages.map((pg: any, index: number) => {
       return (
         <ul key={index}>
           <li>
-            <Link as={`/page/${page.slug}`} href={`/post?slug=${page.slug}&apiRoute=page`}>
-              <a>{page.title.rendered}</a>
+            <Link as={`/page/${pg.slug}`} href={`/post?slug=${pg.slug}&apiRoute=page`}>
+              <a>{pg.title.rendered}</a>
             </Link>
           </li>
         </ul>
       )
     })
     return (
-      <Layout>
-        <Menu menu={this.props.headerMenu} />
+      <Layout menu={headerMenu}>
         <img
           src="/static/images/wordpress-plus-react-header.png"
           width="815"
           className="header-image"
         />
-        <h1>{this.props.page.title.rendered}</h1>
+        <h1>{page.title.rendered}</h1>
         <div
           dangerouslySetInnerHTML={{
-            __html: this.props.page.content.rendered
+            __html: page.content.rendered
           }}
         />
         <h2>Posts</h2>
-        {posts}
+        {allPosts}
         <h2>Pages</h2>
-        {pages}
+        {allPages}
 
         <style jsx>{`
           .header-image {
