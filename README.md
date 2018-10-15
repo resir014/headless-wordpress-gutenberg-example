@@ -1,12 +1,13 @@
 ![WordPress + React Starter Kit](frontend/static/images/wordpress-plus-react-header.png)
 
-This is a fork of [Postlight's Headless WordPress toolkit](https://github.com/postlight/headless-wp-starter) which includes support for Gutenberg. You can read all about it in [this handy introduction](https://trackchanges.postlight.com/introducing-postlights-wordpress-react-starter-kit-a61e2633c48c).
+This is a fork of [Postlight's Headless WordPress toolkit](https://github.com/postlight/headless-wp-starter) which includes support for [Gutenberg](https://wordpress.org/gutenberg/). You can read all about it in [this handy introduction](https://trackchanges.postlight.com/introducing-postlights-wordpress-react-starter-kit-a61e2633c48c).
 
 ## What's inside
 
 - An automated installer script which bootstraps a core WordPress installation.
-- The WordPress plugins you need to set up custom post types and custom fields ([Advanced Custom Fields](https://www.advancedcustomfields.com/) and [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)).
-- Plugins which expose those custom fields and WordPress menus in the [WP REST API](https://developer.wordpress.org/rest-api/) ([ACF to WP API](https://wordpress.org/plugins/acf-to-wp-api/) and [WP-REST-API V2 Menus](https://wordpress.org/plugins/wp-rest-api-v2-menus/)).
+- [Gutenberg](https://wordpress.org/gutenberg/), WordPress' next-generation post editor.
+- [Advanced Custom Fields](https://www.advancedcustomfields.com/) and [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/).
+- Plugins which expose ACF fields and WordPress menus in the [WP REST API](https://developer.wordpress.org/rest-api/) ([ACF to WP API](https://wordpress.org/plugins/acf-to-wp-api/) and [WP-REST-API V2 Menus](https://wordpress.org/plugins/wp-rest-api-v2-menus/)).
 - All the starter WordPress theme code and settings headless requires, including pretty permalinks, CORS `Allow-Origin` headers, and useful logging functions for easy debugging.
 - A starter frontend React app powered by [Next.js](https://nextjs.org/).
 - A [Docker](https://www.docker.com/) container and scripts to manage it, for easily running the frontend React app locally or deploying it to any hosting provider with Docker support.
