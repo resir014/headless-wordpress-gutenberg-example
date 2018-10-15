@@ -26,7 +26,7 @@ class IndexPage extends Component<IndexPageProps> {
   public render() {
     const { posts, pages, page, headerMenu } = this.props
 
-    const allPosts = posts.map((post: any, index: number) => {
+    const allPosts = posts.map((post, index) => {
       return (
         <ul key={index}>
           <li>
@@ -37,7 +37,7 @@ class IndexPage extends Component<IndexPageProps> {
         </ul>
       )
     })
-    const allPages = pages.map((pg: any, index: number) => {
+    const allPages = pages.map((pg, index) => {
       return (
         <ul key={index}>
           <li>

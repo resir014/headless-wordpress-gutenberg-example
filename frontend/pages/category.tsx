@@ -34,7 +34,7 @@ class CategoryPage extends Component<IndexPageProps> {
   public render() {
     if (this.props.categories.length === 0) return <Error statusCode={404} />
 
-    const posts = this.props.posts.map((post: any, index: number) => {
+    const posts = this.props.posts.map((post, index) => {
       return (
         <ul key={index}>
           <li>
