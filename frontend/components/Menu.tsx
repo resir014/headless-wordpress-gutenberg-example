@@ -36,11 +36,7 @@ class Menu extends Component<MenuProps> {
           const slug = this.getSlug(item.url)
           const actualPage = item.object === 'category' ? 'category' : 'post'
           return (
-            <Link
-              as={`/${item.object}/${slug}`}
-              href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
-              key={item.ID}
-            >
+            <Link as={`/${item.object}/${slug}`} href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`} key={item.ID}>
               <a className="menu-link">{item.title}</a>
             </Link>
           )

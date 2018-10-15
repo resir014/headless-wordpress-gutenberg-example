@@ -17,14 +17,10 @@ interface IndexPageProps extends InjectedMenuProps {
 class CategoryPage extends Component<IndexPageProps> {
   public static async getInitialProps(context: NextContext) {
     const { slug } = context.query
-    const categories = await fetch(`${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`).then(
-      res => res.json()
-    )
+    const categories = await fetch(`${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`).then(res => res.json())
 
     if (categories.length > 0) {
-      const postsRes = await fetch(
-        `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&categories=${categories[0].id}`
-      )
+      const postsRes = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed&categories=${categories[0].id}`)
       const posts = await postsRes.json()
       return { categories, posts }
     }

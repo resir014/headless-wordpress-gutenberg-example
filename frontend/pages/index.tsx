@@ -14,9 +14,7 @@ interface IndexPageProps extends InjectedMenuProps {
 
 class IndexPage extends Component<IndexPageProps> {
   public static async getInitialProps() {
-    const page = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/frontpage`).then(res =>
-      res.json()
-    )
+    const page = await fetch(`${Config.apiUrl}/wp-json/postlight/v1/frontpage`).then(res => res.json())
     const posts = await fetch(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed`).then(res => res.json())
     const pages = await fetch(`${Config.apiUrl}/wp-json/wp/v2/pages?_embed`).then(res => res.json())
 
@@ -50,11 +48,7 @@ class IndexPage extends Component<IndexPageProps> {
     })
     return (
       <Layout menu={headerMenu}>
-        <img
-          src="/static/images/wordpress-plus-react-header.png"
-          width="815"
-          className="header-image"
-        />
+        <img src="/static/images/wordpress-plus-react-header.png" width="815" className="header-image" />
         <h1>{page.title.rendered}</h1>
         <div
           dangerouslySetInnerHTML={{
