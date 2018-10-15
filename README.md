@@ -80,9 +80,9 @@ $ robo -h
 
 ### Initial setup
 
-Before setting up, make a copy of the `robo-sample.yml` file, and name it `robo.yml`. This will contain our WordPress setup configurations.
+Before setting up, make a copy of the `robo-sample.yml` file, and name it `robo.yml`. This will contain your WordPress setup configurations.
 
-To set up your new wordpress instance properly configured for headless development, run the following command.
+To set up your new WordPress instance properly configured for headless development, run the following command.
 
 ```sh-session
 $ robo wordpress:setup
