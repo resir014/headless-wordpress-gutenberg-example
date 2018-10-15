@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
-import withHeaderMenu, { InjectedMenuProps } from '../components/withHeaderMenu'
+import withHeaderMenu, { InjectedMenuProps } from '../hoc/withHeaderMenu'
 import Menu from '../components/Menu'
 import { Config } from '../config'
 import { WPPost, WPErrorResponse } from '../interfaces/api'

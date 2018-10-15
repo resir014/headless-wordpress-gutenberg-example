@@ -13,9 +13,9 @@ const withHeaderMenu = <P extends {}>(Page: NextComponentType<P & InjectedMenuPr
     public static async getInitialProps(ctx: NextContext) {
       const pageProps = Page.getInitialProps && (await Page.getInitialProps(ctx))
 
-      const headerMenu = await fetch(`${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`).then(
-        res => res.json()
-      )
+      const headerMenu: WPMenu = await fetch(
+        `${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`
+      ).then(res => res.json())
 
       return Object.assign({}, pageProps, { headerMenu })
     }
