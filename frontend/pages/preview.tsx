@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter, WithRouterProps } from 'next/router'
 import Error from 'next/error'
 
 import Layout from '../components/Layout'
@@ -8,7 +9,12 @@ import { WPPost, WPErrorResponse } from '../interfaces/api'
 
 import blockStyles from '@wordpress/block-library/build-style/style.css'
 
-interface PreviewProps extends InjectedMenuProps {
+interface PageQuery {
+  id: string
+  wpnonce: string
+}
+
+interface PreviewProps extends InjectedMenuProps, WithRouterProps<PageQuery> {
   url: {
     query: {
       [key: string]: string
@@ -30,7 +36,7 @@ class PreviewPage extends Component<PreviewProps, PreviewState> {
   }
 
   public componentDidMount() {
-    const { id, wpnonce } = this.props.url.query
+    const { id, wpnonce } = this.props.router.query
     fetch(
       `${Config.apiUrl}/wp-json/postlight/v1/post/preview?id=${id}&_wpnonce=${wpnonce}`,
       { credentials: 'include' } // required for cookie nonce auth
@@ -71,4 +77,4 @@ class PreviewPage extends Component<PreviewProps, PreviewState> {
   }
 }
 
-export default withHeaderMenu(PreviewPage)
+export default withRouter(withHeaderMenu(PreviewPage))
